@@ -34,7 +34,8 @@ function processFirstItem(stringList, callback) {
  * Both use closure. Counter2 is more obvious, counter1 uses closure in the second function because it accesses the variable in the first function.
  * 
  * 3. In what scenario would the counter1 code be preferable? In what scenario would counter2 be better? 
- *Counter1 code would be preferable if we don't need the variable 'count' to be a global variable. Counter2 would be better if we need to access the variable 'count' in other places because it is set as a global variable.
+ *Counter1 code would be preferable if we don't need the variable 'count' to be a global variable. Counter2 would be better if we need to access the 
+ variable 'count' in other places because it is set as a global variable.
 */
 
 // counter1 code
@@ -57,18 +58,20 @@ function counter2() {
 
 /* Task 2: inning() 
 
-Write a function called `inning` that generates a random number of points that a team scored in an inning. This should be a whole number between 0 and 2. */
+Write a function called `inning` that generates a random number of points that a team scored in an 
+inning. This should be a whole number between 0 and 2. */
 
-function inning(min, max){
+function inning(maxPoint){
 
-  return Math.round(Math.random() * (max-min) + min);
+  return Math.floor(Math.random() * maxPoint);
 }
 
-console.log(inning(0,2));
+console.log(inning(2));
 
 /* Task 3: finalScore()
 
-Write a higher order function called `finalScore` that accepts the callback function `inning` (from above) and a number of innings and and returns the final score of the game in the form of an object.
+Write a higher order function called `finalScore` that accepts the callback function `inning` (from above) and a number of innings and 
+and returns the final score of the game in the form of an object.
 
 For example, 
 
@@ -79,12 +82,21 @@ finalScore(inning, 9) might return:
 }
 
 */ 
-
-function finalScore(/*code Here*/){
-
-  /*Code Here*/
-
+function finalScore (callback, noOfInnings) {
+  let homePoint = 0;
+  let awayPoint = 0;
+  for (let i = 0; i < noOfInnings.length; i++) {
+    homePoint += callback(inning());
+    awayPoint += callback(inning());
+  }
+  console.log(
+    "Home: " + homePoint,
+    "Away: " + awayPoint, 
+  );
 }
+  
+finalScore(inning, 9);
+
 
 /* Task 4: 
 
@@ -106,9 +118,5 @@ and returns the score at each pont in the game, like so:
 9th inning: 6 - 10
 
 Final Score: 6 - 10 */
-
-function scoreboard(/* CODE HERE */) {
-  /* CODE HERE */
-}
 
 
