@@ -61,12 +61,12 @@ function counter2() {
 Write a function called `inning` that generates a random number of points that a team scored in an 
 inning. This should be a whole number between 0 and 2. */
 
-function inning(maxPoint){
+function inning(){
 
-  return Math.floor(Math.random() * maxPoint);
+  return Math.floor(Math.random() * 3);
 }
 
-console.log(inning(2));
+console.log(inning());
 
 /* Task 3: finalScore()
 
@@ -83,16 +83,21 @@ finalScore(inning, 9) might return:
 
 */ 
 function finalScore (callback, noOfInnings) {
-  let homePoint = 0;
-  let awayPoint = 0;
-  for (let i = 0; i < noOfInnings.length; i++) {
-    homePoint += callback(inning());
-    awayPoint += callback(inning());
-  }
-  console.log(
-    "Home: " + homePoint,
-    "Away: " + awayPoint, 
-  );
+  let home = 0;
+  let away = 0;
+  
+  for (let i = 0; i < noOfInnings; i++) {
+    let homeScore = callback();
+    let awayScore = callback();
+
+    home += homeScore;
+    away += awayScore;
+};
+
+console.log({
+  "Home" : home,
+  "Away" : away, 
+});
 }
   
 finalScore(inning, 9);
@@ -119,4 +124,25 @@ and returns the score at each pont in the game, like so:
 
 Final Score: 6 - 10 */
 
+function scoreBoard (callback, noOfInnings) {
+let home = 0;
+let away = 0;
 
+for (let i = 0; i < noOfInnings; i++) {
+
+let homePerInning = callback();
+let awayPerInning = callback();
+
+home += homePerInning;
+away += awayPerInning;
+
+console.log(
+  (i+1) + "st " + "inning: " + home + " - " + away
+);
+
+};
+
+console.log("Final Score " + home + " - " + away)
+}
+
+scoreBoard(inning, 9);
