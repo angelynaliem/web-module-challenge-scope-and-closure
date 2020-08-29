@@ -42,6 +42,9 @@ Find the file `index.js` and complete the tasks.
 Edit the `ReadMe` file with your answers.
 
 1. In your own words, define closure (1-2 sentences).
+
+Closure is when a function is able to access variables that are outside of that function.
+
 2. Study the following code, then answer the questions below.
 
 ```js
@@ -63,8 +66,16 @@ dansRoll();
 ```
 
 a. Where is closure used in this code? How can you tell?
+
+Closure is used when the function accesses the variable outside of it, that is in another function. You can tell because it references the variable 'name' in console.log inside the function.
+
 b. Compare and contrast calling `dansRoll` the first and second time. What is always the same? What could change?
+
+The name would be the same. The number rolled could be change because it's a random number called.
+
 c. What is the lexical scope of `newRoll`? 
+
+Only the function for 'newRoll' can access the variable. The other function outside cannot access it.
 
 ### Task 3 - Stretch Goals
 
